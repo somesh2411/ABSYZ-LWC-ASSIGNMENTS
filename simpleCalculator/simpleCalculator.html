@@ -1,0 +1,58 @@
+<template>
+    <lightning-card title="Simple Calculator" icon-name="standard:calculator">
+        <div class="calculator-container">
+            <!-- Number Inputs -->
+            <div class="input-grid">
+                <lightning-input
+                    type="number"
+                    step="any"
+                    label="First Number"
+                    placeholder="Enter number 1"
+                    value={firstNumber}
+                    data-field="first"
+                    onchange={handleInputChange}>
+                </lightning-input>
+
+                <lightning-input
+                    type="number"
+                    step="any"
+                    label="Second Number"
+                    placeholder="Enter number 2"
+                    value={secondNumber}
+                    data-field="second"
+                    onchange={handleInputChange}>
+                </lightning-input>
+            </div>
+
+            <div class="button-row">
+                <lightning-button label="Add (+)" variant="brand" data-op="+" onclick={handleCalculate}></lightning-button>
+                <lightning-button label="Subtract (-)" variant="brand" data-op="-" onclick={handleCalculate}></lightning-button>
+                <lightning-button label="Multiply (*)" variant="brand" data-op="*" onclick={handleCalculate}></lightning-button>
+                <lightning-button label="Divide (/)" variant="brand" data-op="/" onclick={handleCalculate}></lightning-button>
+                <lightning-button label="Clear History" variant="neutral" onclick={handleClearHistory}></lightning-button>
+            </div>
+
+            <template lwc:if={errorMessage}>
+                <p class="error-text">{errorMessage}</p>
+            </template>
+
+            <div class="history-section">
+                <h3 class="history-title">Calculation History</h3>
+
+                <template lwc:if={hasHistory}>
+                    <ul class="history-list">
+                        <template for:each={historyList} for:item="item">
+                            <li key={item.id} class="history-item">
+                                {item.displayText}
+                            </li>
+                        </template>
+                    </ul>
+                </template>
+
+                <template lwc:else>
+                    <p class="empty-text">No calculations yet. Enter numbers and click an operator button.</p>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

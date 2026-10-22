@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Account Details" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+            <template lwc:if={account.data}>
+                <div class="slds-form slds-form_stacked">
+                    <p><strong>Account Name:</strong> {name}</p>
+                    <p><strong>Phone:</strong> {phone}</p>
+                    <p><strong>Type:</strong> {type}</p>
+                    <p><strong>Industry:</strong> {industry}</p>
+                    <p><strong>Billing Address:</strong> {billingAddress}</p>
+                    <p>
+                        <strong>Annual Revenue:</strong> 
+                        <lightning-formatted-number 
+                            value={annualRevenue} 
+                            format-style="currency" 
+                            currency-code="USD">
+                        </lightning-formatted-number>
+                    </p>
+                </div>
+            </template>
+
+            <template lwc:elseif={account.error}>
+                <div class="slds-text-color_error">
+                    Failed to load account details.
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="Contact Search" icon-name="standard:contact">
+        <div class="search-container">
+            <!-- Search Input Box -->
+            <div class="search-box">
+                <lightning-input
+                    type="search"
+                    label="Search Contacts"
+                    placeholder="Type a contact name..."
+                    value={searchKey}
+                    onchange={handleSearchChange}>
+                </lightning-input>
+            </div>
+
+            <!-- Contact Results Section -->
+            <div class="results-container">
+                <template lwc:if={hasContacts}>
+                    <ul class="contact-list">
+                        <template for:each={contacts} for:item="con">
+                            <li key={con.Id} class="contact-card">
+                                <div class="contact-header">
+                                    <span class="contact-name">{con.Name}</span>
+                                    <span class="contact-title">{con.Title}</span>
+                                </div>
+                                <div class="contact-details">
+                                    <p class="detail-line">
+                                        <span class="detail-label">Email:</span> {con.Email}
+                                    </p>
+                                    <p class="detail-line">
+                                        <span class="detail-label">Phone:</span> {con.Phone}
+                                    </p>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </template>
+
+                <template lwc:elseif={showNoResults}>
+                    <p class="info-message">No contacts found matching "{searchKey}".</p>
+                </template>
+
+                <template lwc:elseif={isSearchEmpty}>
+                    <p class="info-message">Enter a name above to find contacts.</p>
+                </template>
+
+                <template lwc:if={error}>
+                    <p class="error-message">Error fetching contacts. Please try again.</p>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,96 @@
+.todo-container {
+    padding: 1.25rem;
+}
+
+.input-section {
+    margin-bottom: 1.5rem;
+}
+
+.input-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.textbox-wrapper {
+    flex: 1;
+}
+
+.add-button {
+    min-width: 44px;
+}
+
+.error-text {
+    color: #ba0517;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.4rem;
+}
+
+.lists-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+
+
+
+
+.list-column {
+    background-color: #fafbfc;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 1rem;
+    min-height: 200px;
+}
+
+.section-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a202c;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+    margin: 0 0 0.75rem 0;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.task-item {
+    padding: 0.4rem 0.5rem;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #edf2f7;
+}
+
+.task-item.completed {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f7fafc;
+}
+
+.done-bullet {
+    color: #2e844b;
+    font-weight: bold;
+}
+
+.done-label {
+    text-decoration: line-through;
+    color: #718096;
+    font-size: 0.875rem;
+}
+
+.empty-state {
+    color: #a0aec0;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+}

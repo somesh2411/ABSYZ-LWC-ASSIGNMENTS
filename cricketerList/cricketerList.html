@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Cricketers" icon-name="standard:user">
+        <div class="card-content">
+            <div class="badge-list-vertical">
+                <template for:each={cricketers} for:item="cricketer">
+                    <div key={cricketer.id} class="badge-item">
+                        <lightning-badge label={cricketer.name}></lightning-badge>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

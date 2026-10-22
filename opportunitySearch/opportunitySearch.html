@@ -1,0 +1,76 @@
+<template>
+    <lightning-card title="Opportunity Filter" icon-name="standard:opportunity">
+        <div class="card-body">
+            <!-- Search Bar Area -->
+            <div class="filter-bar">
+                <div class="input-wrapper">
+                    <lightning-input
+                        type="number"
+                        formatter="currency"
+                        step="0.01"
+                        label="Minimum Amount"
+                        placeholder="Enter amount (e.g. 50000)"
+                        value={enteredAmount}
+                        onchange={handleAmountChange}>
+                    </lightning-input>
+                </div>
+                <div class="button-wrapper">
+                    <lightning-button
+                        variant="brand"
+                        label="Search"
+                        icon-name="utility:search"
+                        onclick={handleSearch}>
+                    </lightning-button>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <template lwc:if={isLoading}>
+                <div class="spinner-container">
+                    <lightning-spinner alternative-text="Loading Opportunities" size="small"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- Results Section -->
+            <div class="results-area">
+                <template lwc:if={hasOpportunities}>
+                    <div class="opportunity-grid">
+                        <template for:each={opportunities} for:item="opp">
+                            <div key={opp.Id} class="opp-card">
+                                <div class="opp-top-row">
+                                    <span class="opp-name">{opp.Name}</span>
+                                    <span class="opp-amount">
+                                        <lightning-formatted-number
+                                            value={opp.Amount}
+                                            format-style="currency"
+                                            currency-code="USD">
+                                        </lightning-formatted-number>
+                                    </span>
+                                </div>
+                                <div class="opp-bottom-row">
+                                    <span class="opp-stage">Stage: {opp.StageName}</span>
+                                    <span class="opp-date">Close: {opp.CloseDate}</span>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <!-- No Results State -->
+                <template lwc:elseif={showNoRecords}>
+                    <p class="status-msg">No opportunities found with amount &gt;= {searchedAmount}.</p>
+                </template>
+
+                <!-- Initial Idle State -->
+                <template lwc:elseif={isInitialState}>
+                    <p class="status-msg">Enter an amount and click "Search" to view matching opportunities.</p>
+                </template>
+
+                <!-- Error Message -->
+                <template lwc:if={errorMessage}>
+                    <p class="error-msg">{errorMessage}</p>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

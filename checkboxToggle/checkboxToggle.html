@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Checkbox Status" icon-name="utility:check">
+        <div class="toggle-card-body">
+            <!-- Checkbox Input -->
+            <div class="checkbox-wrapper">
+                <lightning-input 
+                    type="checkbox" 
+                    label="Toggle Option" 
+                    checked={isChecked} 
+                    onchange={handleCheckboxChange}>
+                </lightning-input>
+            </div>
+
+            <div class="status-box">
+                <p class={statusStyleClass}>{statusMessage}</p>
+            </div>
+        </div>
+    </lightning-card>
+</template>

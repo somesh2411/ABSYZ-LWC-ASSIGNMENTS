@@ -1,0 +1,66 @@
+<template>
+    <lightning-card title="My Task Tracker" icon-name="custom:custom62">
+        <div class="todo-container">
+            <div class="input-section">
+                <div class="input-controls">
+                    <div class="textbox-wrapper">
+                        <lightning-input
+                            type="text"
+                            variant="label-hidden"
+                            placeholder="Add a new task..."
+                            value={taskInput}
+                            onchange={handleInputChange}>
+                        </lightning-input>
+                    </div>
+                    <lightning-button
+                        variant="brand"
+                        label="+"
+                        class="add-button"
+                        onclick={handleAddTask}>
+                    </lightning-button>
+                </div>
+                <template lwc:if={errorMessage}>
+                    <p class="error-text">{errorMessage}</p>
+                </template>
+            </div>
+            <div class="lists-layout">
+                <div class="list-column">
+                    <h2 class="section-heading">To-do</h2>
+                    <template lwc:if={hasTodoTasks}>
+                        <ul class="task-list">
+                            <template for:each={todoTasks} for:item="task">
+                                <li key={task.id} class="task-item">
+                                    <lightning-input
+                                        type="checkbox"
+                                        label={task.name}
+                                        data-id={task.id}
+                                        onchange={handleTaskComplete}>
+                                    </lightning-input>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                    <template lwc:else>
+                        <p class="empty-state">No pending tasks.</p>
+                    </template>
+                </div>
+                <div class="list-column">
+                    <h2 class="section-heading">Done</h2>
+                    <template lwc:if={hasDoneTasks}>
+                        <ul class="task-list">
+                            <template for:each={doneTasks} for:item="task">
+                                <li key={task.id} class="task-item completed">
+                                    <span class="done-bullet">&#10003;</span>
+                                    <span class="done-label">{task.name}</span>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                    <template lwc:else>
+                        <p class="empty-state">No completed tasks yet.</p>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>
