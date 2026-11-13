@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+        <div>
+            <lightning-input label="Enter your name"
+            value={username} onchange={handleinputchange}></lightning-input>
+
+            <p>{greetingmessage}</p>
+
+            <lightning-button label = "Clear"  onclick={handleclear}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

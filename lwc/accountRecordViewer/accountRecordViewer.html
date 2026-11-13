@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Account Details (uiRecordApi)" icon-name="standard:account">
+        <div class="slds-var-p-around_medium">
+            <template lwc:if={account.data}>
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <div class="slds-col slds-size_1-of-2 slds-var-m-bottom_small">
+                        <span class="slds-text-title">Account Name:</span>
+                        <p class="slds-text-body_regular">{name}</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-var-m-bottom_small">
+                        <span class="slds-text-title">Industry:</span>
+                        <p class="slds-text-body_regular">{industry}</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-var-m-bottom_small">
+                        <span class="slds-text-title">Phone:</span>
+                        <p class="slds-text-body_regular">
+                            <lightning-formatted-phone value={phone}></lightning-formatted-phone>
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-var-m-bottom_small">
+                        <span class="slds-text-title">Type:</span>
+                        <p class="slds-text-body_regular">{type}</p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-var-m-bottom_small">
+                        <span class="slds-text-title">Annual Revenue:</span>
+                        <p class="slds-text-body_regular">
+                            <lightning-formatted-number 
+                                value={annualRevenue} 
+                                format-style="currency" 
+                                currency-code="USD">
+                            </lightning-formatted-number>
+                        </p>
+                    </div>
+                </div>
+            </template>
+
+            <template lwc:elseif={account.isLoading}>
+                <lightning-spinner alternative-text="Loading account record..." size="small"></lightning-spinner>
+            </template>
+
+            <!-- Error State -->
+            <template lwc:if={account.error}>
+                <div class="slds-text-color_error">
+                    Failed to retrieve the Account record.
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

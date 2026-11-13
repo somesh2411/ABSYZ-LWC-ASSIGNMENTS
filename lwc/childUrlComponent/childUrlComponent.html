@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-box slds-var-p-around_medium child-container">
+        <p class="slds-text-heading_small slds-text-title_bold">This is Child Component</p>
+        <p class="slds-var-m-bottom_small">Click below buttons for URL</p>
+
+        <lightning-button 
+            label="Absyz Link" 
+            variant="brand-outline" 
+            class="slds-var-m-right_x-small custom-btn" 
+            data-url="https://absyz.com/" 
+            onclick={handleClick}>
+        </lightning-button>
+
+        <lightning-button 
+            label="Trailhead Link" 
+            variant="brand-outline" 
+            class="custom-btn" 
+            data-url="https://trailhead.salesforce.com/" 
+            onclick={handleClick}>
+        </lightning-button>
+    </div>
+</template>

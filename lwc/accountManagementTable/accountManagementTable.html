@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="Account Management" icon-name="standard:account">
+        <div class="slds-p-around_medium">
+            <div class="slds-grid slds-gutters slds-m-bottom_small">
+                <div class="slds-col slds-size_2-of-3">
+                    <lightning-input
+                        label="Search by Name"
+                        value={searchTerm}
+                        onchange={handleSearchChange}
+                        onkeyup={handleSearch}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-3 slds-align-bottom">
+                    <lightning-button
+                        variant="destructive"
+                        label="Delete Selected"
+                        onclick={handleDeleteSelected}
+                        disabled={isLoading}>
+                    </lightning-button>
+                </div>
+            </div>
+
+            <p class="slds-m-bottom_small">Selected records: {selectedCount}</p>
+
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+
+            <template if:false={isLoading}>
+                <template if:true={accounts.length}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={accounts}
+                        columns={columns}
+                        sorted-by={sortBy}
+                        sorted-direction={sortDirection}
+                        onsort={handleSort}
+                        onrowselection={handleRowSelection}
+                        onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </template>
+                <template if:true={noRecords}>
+                    <p class="slds-text-align_center slds-m-top_medium">No records available.</p>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

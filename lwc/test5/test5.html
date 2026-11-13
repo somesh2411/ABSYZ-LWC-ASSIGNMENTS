@@ -1,0 +1,32 @@
+<template>
+    <lightning-card>
+        <div>
+            <template lwc:if={Isview}>
+                <template lwc:if={account.data}>
+                    <div>
+                        <p>Account Name {accountname}</p>
+                        <p>Industry {industry}</p>
+                        <p>Phone : {phone}</p>
+                        <p>Website : {website}</p>
+                    </div>
+
+                    <lightning-button 
+                      variant="base"
+                      label="Edit" 
+                      onclick={handletoggleedit} 
+                    ></lightning-button>
+                </template>
+
+                <template lwc:else>
+                        Unable to retrieve
+                </template>
+            </template>
+
+            <template lwc:else>
+                <lightning-record-form record-id={recordId} object-api-name="Account" fields = {fieldset} mode = "edit"
+                    onsuccess = {handlesuccess} oncancel = {handletoggleedit}>
+                </lightning-record-form>
+            </template>
+        </div>
+    </lightning-card>
+</template>

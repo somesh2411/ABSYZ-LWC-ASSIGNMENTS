@@ -1,0 +1,35 @@
+<template>
+    <lightning-card>
+        <div>
+            <lightning-button onclick={showIT} label="Show IT"></lightning-button>
+            <lightning-button 
+              variant=""
+              label="Show All"
+              onclick={showAll} 
+            ></lightning-button>
+        </div>
+
+        <template lwc:if={hasEmp}>
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Dept</th>
+                </thead>
+                <tbody>
+                    <template for:each={allemp} for:item="emp">
+                        <tr key={emp.id}>
+                            <td>{emp.id}</td>
+                            <td>{emp.name}</td>
+                            <td>{emp.department}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+
+        <template lwc:else>
+            <p>No emp</p>
+        </template>
+    </lightning-card>
+</template>

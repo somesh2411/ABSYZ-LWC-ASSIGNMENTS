@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Create Related Contact" icon-name="standard:contact">
+        <div class="slds-var-p-around_medium">
+            <template lwc:if={isLoading}><lightning-spinner alternative-text="Loading..." size="medium">
+            </lightning-spinner></template>
+            <lightning-combobox name="accountLookup" label="Select Account" value={selectedAccountId} 
+            placeholder="Choose an Account..." options={accountOptions} onchange={handleAccountChange} required></lightning-combobox>
+            <lightning-input label="Last Name" name="LastName" value={contactRecord.LastName} 
+            onchange={handleInputChange} required></lightning-input>
+            <lightning-input label="Title" name="Title" value={contactRecord.Title} 
+            onchange={handleInputChange}></lightning-input>
+            <lightning-input type="email" label="Email" name="Email" value={contactRecord.Email} 
+            onchange={handleInputChange}></lightning-input>
+            <lightning-input type="tel" label="Phone Number" name="Phone" value={contactRecord.Phone} 
+            onchange={handleInputChange}></lightning-input>
+            <div class="slds-var-m-top_medium">
+                <lightning-button variant="brand" label="Save" title="Save Contact" 
+                onclick={handleSave}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

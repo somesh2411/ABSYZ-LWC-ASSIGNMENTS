@@ -1,0 +1,70 @@
+<template>
+    <lightning-card title="Event Project Progress" icon-name="standard:task">
+        <div class="project-card">
+            <template if:true={record.data}>
+                <div class="project-header">
+                    <h2 class="project-name">{projectName}</h2>
+                    <span class="project-number">{projectNumber}</span>
+                </div>
+
+                <div class="progress-block">
+                    <div class="progress-label">
+                        <span>Progress</span>
+                        <span class="progress-value">{progress}%</span>
+                    </div>
+                    <lightning-progress-bar value={progress} size="large"></lightning-progress-bar>
+                    <p class="status-text">Current Status: <strong>{status}</strong></p>
+                </div>
+
+                <div class="dates">
+                    <div class="date-item">
+                        <span class="label">Start Date</span>
+                        <span class="value">{startDate}</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="label">End Date</span>
+                        <span class="value">{endDate}</span>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <lightning-button
+                        label="Planning"
+                        variant={planningVariant}
+                        data-status="Planning"
+                        onclick={handleStatusChange}
+                        disabled={isPlanning}>
+                    </lightning-button>
+                    <lightning-button
+                        label="In Progress"
+                        variant={inProgressVariant}
+                        data-status="In Progress"
+                        onclick={handleStatusChange}
+                        disabled={isInProgress}>
+                    </lightning-button>
+                    <lightning-button
+                        label="On Hold"
+                        variant={onHoldVariant}
+                        data-status="On Hold"
+                        onclick={handleStatusChange}
+                        disabled={isOnHold}>
+                    </lightning-button>
+                    <lightning-button
+                        label="Completed"
+                        variant={completedVariant}
+                        data-status="Completed"
+                        onclick={handleStatusChange}
+                        disabled={isCompleted}>
+                    </lightning-button>
+                </div>
+            </template>
+
+            <template if:true={record.error}>
+                <p class="status-message status-message--error">Unable to load Event Project.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
+
+
+

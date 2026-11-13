@@ -1,0 +1,26 @@
+<template>
+    <lightning-card>
+        <div>
+            <lightning-input label = 'Enter the Average Mark' 
+            value = {mark1} onchange = {handlemark1change} min = "0" max = "100"></lightning-input>
+
+            <lightning-input label = 'Enter the Average Mark' 
+            value = {mark2} onchange = {handlemark1change} min = "0" max = "100"></lightning-input>
+
+            <lightning-input label = 'Enter the Average Mark' 
+            value = {mark3} onchange = {handlemark1change} min = "0" max = "100"></lightning-input>
+
+            <lightning-button label = 'Calculate' onclick={handlecalculate}></lightning-button>
+
+            <template lwc:if={errormsg}>{errormsg}</template>
+
+            <template lwc:if={showres}>
+                <div>
+                    <p>Total Marks : {totalmark}</p>
+                    <p>Average : {Avg}</p>
+                    <p>Grade : {grade}</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

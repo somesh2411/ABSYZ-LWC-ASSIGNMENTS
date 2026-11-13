@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Employee Search" icon-name="standard:user">
+        <div class="slds-p-around_medium">
+            <lightning-input
+                label="Department"
+                value={department}
+                onchange={handleChange}>
+            </lightning-input>
+            <lightning-button
+                variant="brand"
+                label="Search"
+                onclick={searchEmp}>
+            </lightning-button>
+
+            <template lwc:if={hasEmp}>
+                <template for:each={employees} for:item="employee">
+                    <div key = {employee.Id}>
+                        <p> Name : {employee.name} </p>
+                        <p> Department : {employee.Department__c} </p>
+                        <p> Salary : {employee.Salary__c} </p>
+                    </div>
+                </template>
+            </template>
+
+            <template lwc:if={errorMessage}>{errorMessage}</template>
+        </div>
+    </lightning-card>
+</template>

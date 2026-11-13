@@ -1,0 +1,20 @@
+<template>
+    <lightning-card>
+        <div>
+            <p> Child component </p>
+            <p>Name : {empName}</p>
+            <p>Department : {dept}</p>
+        </div>
+
+        <div>
+            <p>Student Name : {stdName}</p>
+            <p>Student ID: {stdId}</p>
+
+            <lightning-button 
+              variant="base"
+              label="Send to Parent" 
+              onclick={handleselect} 
+            ></lightning-button>
+        </div>
+    </lightning-card>
+</template>

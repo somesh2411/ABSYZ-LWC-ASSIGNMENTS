@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Parent Component" icon-name="standard:case_wrap">
+        <div class="slds-p-around_medium slds-theme_shade slds-border_around">
+            <p class="slds-text-heading_small">This is Parent Component and Display URL link below :</p>
+            <p class="slds-text-heading_medium slds-font-weight_bold slds-m-vertical_small">
+                <a href={selectedUrl} target="_blank">{selectedUrl}</a>
+            </p>
+            
+            <!-- Child Component Listening to the Event -->
+            <c-child-component onurlselect={handleUrlSelect}></c-child-component>
+        </div>
+    </lightning-card>
+</template>

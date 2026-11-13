@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Parent Component" icon-name="custom:custom18">
+        <div class="slds-var-p-around_medium">
+            <lightning-input 
+                label="Task 10 - Enter text to pass to Child" 
+                value={parentText} 
+                onchange={handleParentInputChange}
+                placeholder="Type here to pass to child...">
+            </lightning-input>
+
+            <div class="slds-var-m-top_medium">
+                <strong>Task 11 - Received from Child:</strong> {messageFromChild}
+            </div>
+
+            <div class="slds-var-m-top_medium">
+                <lightning-button 
+                    label="Task 12 - Call Child Method" 
+                    variant="brand" 
+                    onclick={handleCallChildMethod}>
+                </lightning-button>
+            </div>
+
+            <c-child-component 
+                message-from-parent={parentText}
+                onmessagechange={handleMessageFromChild}>
+            </c-child-component>
+        </div>
+    </lightning-card>
+</template>

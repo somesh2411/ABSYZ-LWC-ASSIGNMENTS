@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Contact Details">
+        <div class="slds-var-p-around_medium">
+            <template lwc:if={contacts.data}>
+                <ul class="slds-list_dotted">
+                    <template for:each={contacts.data} for:item="contact">
+                        <li key={contact.Id} class="slds-var-m-bottom_xx-small">
+                            <strong>Contact Name :</strong> {contact.Name}
+                        </li>
+                    </template>
+                </ul>
+            </template>
+
+            <template lwc:if={contacts.error}>
+                <p class="slds-text-color_error">Error loading contacts.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

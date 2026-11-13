@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-box slds-theme_shade slds-var-m-top_medium">
+        <h3 class="slds-text-heading_small slds-var-m-bottom_x-small">Child Component</h3>
+        
+        <p class="slds-var-m-bottom_small">
+            <strong>Task 10 - Received from Parent:</strong> {messageFromParent}
+        </p>
+
+        <lightning-input 
+            label="Task 11 - Enter text to send to Parent" 
+            value={childInputText} 
+            onchange={handleChildInputChange}
+            placeholder="Type here to update parent...">
+        </lightning-input>
+
+        <template if:true={task12Message}>
+            <p class="slds-var-m-top_small slds-text-color_success">
+                <strong>Task 12 Status:</strong> {task12Message}
+            </p>
+        </template>
+    </div>
+</template>

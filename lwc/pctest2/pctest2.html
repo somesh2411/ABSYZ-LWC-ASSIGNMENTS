@@ -1,0 +1,16 @@
+<template>
+    <lightning-card>
+        <div>
+            <p> Parent component </p>
+            <c-pctest1 emp-name = {Name}
+                dept = {dept} 
+                onstudentselect = {handleStudent}>
+            </c-pctest1>
+        </div>
+
+        <div>
+            <p>Selected Student Id : {stdId} </p>
+            <p>Name : {stdName}</p>
+        </div>
+    </lightning-card>
+</template>

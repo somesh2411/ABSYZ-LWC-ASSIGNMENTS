@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Matching Contacts">
+        <div>
+            <template if:true={hasContacts}>
+                <lightning-datatable key-field="Id" data={contacts.data} columns={columns} hide-checkbox-column></lightning-datatable>
+            </template>
+            <template if:false={hasContacts}>
+                <p>No matching contacts found.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

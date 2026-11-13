@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Related Contacts" icon-name="standard:contact">
+        <div class="slds-var-p-around_medium">
+            <template lwc:if={contacts}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={contacts}
+                    columns={columns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+
+            <!-- Error State -->
+            <template lwc:if={error}>
+                <div class="slds-text-color_error">
+                    Error loading contacts.
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

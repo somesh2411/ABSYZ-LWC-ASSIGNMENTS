@@ -1,0 +1,9 @@
+.child-container {
+    background-color: #ffb800; 
+    border: 2px solid #000;
+}
+
+.custom-btn {
+    --slds-c-button-brand-color-background: #8ed8f8;
+    --slds-c-button-brand-color-border: #000;
+}
